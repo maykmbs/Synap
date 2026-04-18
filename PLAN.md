@@ -1,6 +1,7 @@
-# Inbox Universal v1 — Plan de Proyecto
+# Synap v1 — Plan de Proyecto
 
 > Herramienta de captura y organización personal con clasificación automática por IA.
+> **Nombre de la app:** Synap
 > **Equipo:** 2 devs juniors · <10h semanales c/u · Sin deadline fijo
 
 ---
@@ -25,11 +26,12 @@
 
 ---
 
+
 ## 1. Visión del producto
 
-Inbox Universal es una herramienta web personal donde el usuario pega cualquier tipo de contenido (un link, un importe, una idea, una tarea) en una sola caja de texto, y la IA lo clasifica automáticamente y lo organiza en la sección correspondiente.
+Synap es una herramienta web personal donde el usuario pega cualquier tipo de contenido (un link, un importe, una idea, una tarea) en una sola caja de texto, y la IA lo clasifica automáticamente y lo organiza en la sección correspondiente.
 
-**Problema que resuelve:** el usuario tiene contenido disperso en notas, capturas de pantalla, marcadores, apps de tareas y hojas de cálculo. Inbox Universal es el punto de entrada único.
+**Problema que resuelve:** el usuario tiene contenido disperso en notas, capturas de pantalla, marcadores, apps de tareas y hojas de cálculo. Synap es el punto de entrada único.
 
 **Propuesta de valor:** captura en segundos, organización automática, sin fricción.
 
@@ -46,6 +48,7 @@ Inbox Universal es una herramienta web personal donde el usuario pega cualquier 
 
 ## 2. Stack tecnológico
 
+
 ### Frontend
 | Tecnología | Versión | Uso |
 |-----------|---------|-----|
@@ -53,8 +56,11 @@ Inbox Universal es una herramienta web personal donde el usuario pega cualquier 
 | TypeScript | 5.x | Tipado estático en todo el proyecto |
 | Tailwind CSS | 3.x | Estilos utilitarios |
 | Zustand | 4.x | Estado global del inbox |
-| TanStack Query | 5.x | Fetching, caché, revalidación |
-| shadcn/ui | latest | Componentes base accesibles |
+| TanStack Query | 5.x | Fetching, caché y revalidación de datos del backend (ej: items, usuario, etc). Permite manejo eficiente de estados de carga, error y sincronización con Supabase y FastAPI. |
+
+**Nota:**
+- No se usará shadcn/ui. Todos los componentes UI serán creados desde cero, priorizando accesibilidad y consistencia visual con la paleta definida.
+- Se usará TanStack Query para sincronización y caché de datos remotos (Supabase, FastAPI) y Zustand para estado global local (UI, flags, selección, etc.). Ambos se complementan y son estándar en apps Next.js modernas.
 
 ### Backend AI
 | Tecnología | Versión | Uso |
@@ -145,7 +151,7 @@ inbox-universal/
 │   │   │   ├── layout.tsx
 │   │   │   └── globals.css
 │   │   ├── components/
-│   │   │   ├── ui/                   ← shadcn components
+│   │   │   ├── ui/                   ← componentes propios reutilizables
 │   │   │   ├── layout/
 │   │   │   │   ├── Sidebar.tsx
 │   │   │   │   └── TopBar.tsx
@@ -796,4 +802,4 @@ colors: {
 
 ---
 
-*Plan generado para Inbox Universal v1 · 2 devs juniors · Stack: Next.js + Supabase + FastAPI + Groq · Deploy: Vercel + Railway*
+*Plan generado para Synap v1 · 2 devs juniors · Stack: Next.js + Supabase + FastAPI + Groq · Deploy: Vercel + Railway*
