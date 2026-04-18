@@ -125,72 +125,71 @@ Synap es una herramienta web personal donde el usuario pega cualquier tipo de co
 ## 4. Estructura del repositorio
 
 ```
-inbox-universal/
-├── apps/
-│   ├── web/                          ← Next.js frontend
-│   │   ├── app/
-│   │   │   ├── (auth)/
-│   │   │   │   └── login/
-│   │   │   │       └── page.tsx
-│   │   │   ├── (app)/
-│   │   │   │   ├── layout.tsx        ← sidebar + auth guard
-│   │   │   │   ├── dashboard/
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── inbox/
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── finances/
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── tasks/
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── library/
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── notes/
-│   │   │   │   │   └── page.tsx
-│   │   │   │   └── settings/
-│   │   │   │       └── page.tsx
-│   │   │   ├── layout.tsx
-│   │   │   └── globals.css
-│   │   ├── components/
-│   │   │   ├── ui/                   ← componentes propios reutilizables
-│   │   │   ├── layout/
-│   │   │   │   ├── Sidebar.tsx
-│   │   │   │   └── TopBar.tsx
+synap/
+├── frontend/                  ← Next.js frontend
+│   ├── app/
+│   │   ├── (auth)/
+│   │   │   └── login/
+│   │   │       └── page.tsx
+│   │   ├── (app)/
+│   │   │   ├── layout.tsx        ← sidebar + auth guard
+│   │   │   ├── dashboard/
+│   │   │   │   └── page.tsx
 │   │   │   ├── inbox/
-│   │   │   │   ├── CaptureBox.tsx
-│   │   │   │   ├── ItemCard.tsx
-│   │   │   │   └── TypeBadge.tsx
+│   │   │   │   └── page.tsx
 │   │   │   ├── finances/
+│   │   │   │   └── page.tsx
 │   │   │   ├── tasks/
+│   │   │   │   └── page.tsx
 │   │   │   ├── library/
-│   │   │   └── notes/
-│   │   ├── lib/
-│   │   │   ├── supabase/
-│   │   │   │   ├── client.ts
-│   │   │   │   └── server.ts
-│   │   │   ├── api/
-│   │   │   │   └── classifier.ts     ← llamadas a FastAPI
-│   │   │   └── utils.ts
-│   │   ├── store/
-│   │   │   └── inbox.store.ts        ← Zustand
-│   │   ├── types/
-│   │   │   └── index.ts              ← tipos compartidos
-│   │   ├── middleware.ts             ← protección de rutas
-│   │   ├── tailwind.config.ts
-│   │   └── package.json
-│   │
-│   └── ai-service/                   ← FastAPI microservicio
-│       ├── main.py
-│       ├── routers/
-│       │   └── classify.py
-│       ├── schemas/
-│       │   ├── request.py
-│       │   └── response.py
-│       ├── services/
-│       │   └── groq_service.py
-│       ├── prompts/
-│       │   └── classifier.py
-│       ├── requirements.txt
-│       └── Dockerfile
+│   │   │   │   └── page.tsx
+│   │   │   ├── notes/
+│   │   │   │   └── page.tsx
+│   │   │   └── settings/
+│   │   │       └── page.tsx
+│   │   ├── layout.tsx
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── ui/                   ← componentes propios reutilizables
+│   │   ├── layout/
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── TopBar.tsx
+│   │   ├── inbox/
+│   │   │   ├── CaptureBox.tsx
+│   │   │   ├── ItemCard.tsx
+│   │   │   └── TypeBadge.tsx
+│   │   ├── finances/
+│   │   ├── tasks/
+│   │   ├── library/
+│   │   └── notes/
+│   ├── lib/
+│   │   ├── supabase/
+│   │   │   ├── client.ts
+│   │   │   └── server.ts
+│   │   ├── api/
+│   │   │   └── classifier.ts     ← llamadas a FastAPI
+│   │   └── utils.ts
+│   ├── store/
+│   │   └── inbox.store.ts        ← Zustand
+│   ├── types/
+│   │   └── index.ts              ← tipos compartidos
+│   ├── middleware.ts             ← protección de rutas
+│   ├── tailwind.config.ts
+│   └── package.json
+│
+├── backend/                    ← FastAPI microservicio
+│   ├── main.py
+│   ├── routers/
+│   │   └── classify.py
+│   ├── schemas/
+│   │   ├── request.py
+│   │   └── response.py
+│   ├── services/
+│   │   └── groq_service.py
+│   ├── prompts/
+│   │   └── classifier.py
+│   ├── requirements.txt
+│   └── Dockerfile
 │
 ├── .env.example
 ├── .gitignore
@@ -610,7 +609,7 @@ def build_user_prompt(text: str, user_hint: str = "") -> str:
 ### Dev 1 — Frontend + UX
 
 **Responsabilidades permanentes:**
-- Todo lo que está en `apps/web/`
+- Todo lo que está en `frontend/`
 - Integración con Supabase Auth desde el cliente
 - Llamadas a FastAPI desde Next.js
 - Diseño de componentes con la paleta del proyecto
@@ -625,7 +624,7 @@ def build_user_prompt(text: str, user_hint: str = "") -> str:
 ### Dev 2 — Backend + AI
 
 **Responsabilidades permanentes:**
-- Todo lo que está en `apps/ai-service/`
+- Todo lo que está en `backend/`
 - Schema de Supabase + políticas RLS
 - Prompt engineering del clasificador
 - Endpoints REST en Next.js API routes para operaciones en DB
@@ -648,7 +647,7 @@ Una vez por semana, 30 minutos de sync:
 
 ## 12. Variables de entorno
 
-### `apps/web/.env.local`
+### `frontend/.env.local`
 
 ```bash
 # Supabase
@@ -662,7 +661,7 @@ NEXT_PUBLIC_AI_SERVICE_URL=http://localhost:8000
 NEXT_PUBLIC_AI_SERVICE_URL=https://ai-service.up.railway.app
 ```
 
-### `apps/ai-service/.env`
+### `backend/.env`
 
 ```bash
 # Groq
@@ -699,7 +698,7 @@ chore(deps): update groq sdk to 0.4.0
 ### TypeScript (Frontend)
 
 ```typescript
-// Tipos centrales en apps/web/types/index.ts
+// Tipos centrales en frontend/types/index.ts
 export type ItemType = 'finance' | 'task' | 'library' | 'note'
 export type Priority = 'high' | 'medium' | 'low'
 export type ItemStatus = 'pending' | 'done' | 'archived'
