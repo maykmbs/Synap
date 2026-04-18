@@ -1,0 +1,60 @@
+# Node/Next.js
+node_modules/
+.next/
+.env*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Build
+out/
+dist/
+build/
+
+# System
+Thumbs.db
+
+# OS
+*.DS_Store
+
+# Test
+coverage/
+
+# Misc
+*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Frontend
+/frontend/.next/
+/frontend/node_modules/
+/frontend/.env*
+
+# Backend
+/backend/__pycache__/
+/backend/.env*
+/backend/venv/
+/backend/.venv/
